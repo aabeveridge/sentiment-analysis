@@ -52,7 +52,7 @@ bing.negative <- get_sentiments("bing") %>%
 # count the top bing lexicon negatives in a given month
 # chapter 2.2 Text Mining with R
 month.negative <- tidy.data %>%
-  filter(month == "AUG") %>%
+  filter(month == "Feb") %>%
   inner_join(bing.negative) %>%
   count(word, sort = TRUE)
 
@@ -64,7 +64,7 @@ url.sentiment <- tidy.data %>%
   mutate(sentiment = positive - negative)
 
 # reproduces figure 2.2 from Texting with R
-ggplot(week.sentiment, aes(index, sentiment, fill = month)) +
+ggplot(url.sentiment, aes(index, sentiment, fill = month)) +
   theme(axis.title.x=element_blank(),
   axis.text.x=element_blank(),
   axis.ticks.x=element_blank()) +
